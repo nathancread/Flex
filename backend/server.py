@@ -18,10 +18,12 @@ def test():
     img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 
     # do some fancy processing here....
-    OpenPoseImage.detectImage(img)
+    messages = OpenPoseImage.detectImage(img)
     # build a response dict to send back to client
-    response = {'message': 'image received. size={}x{}'.format(img.shape[1], img.shape[0])
-                }
+    response = {'message': 'image received. size={}x{}'.format(img.shape[1], img.shape[0]),
+                'leftAngle': messages[0],
+                'rightAngle': messages[1],
+                'balance': messages[2]}
     # encode response using jsonpickle
     response_pickled = jsonpickle.encode(response)
 

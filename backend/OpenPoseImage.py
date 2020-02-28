@@ -109,11 +109,13 @@ def detectImage(frame):
     # print("13",points[13])
 
     #checks depth of squat
-    print("left angle estimation is",computeDepthSide(points[12],points[11]))
-    print("right angle estimation is",computeDepthSide(points[9],points[8]))
+    #print("left angle estimation is",computeDepthSide(points[12],points[11]))
+    #print("right angle estimation is",computeDepthSide(points[9],points[8]))
     #checks ankle vs shoulder to determine if weight is balanced assuming height is 6ft
     #if positive it means the shoulders are
-    print("weight is off balance by approximatly", checkBalanceSide(points[13],points[5],points[0])*60,"inches")
+    #print("weight is off balance by approximatly", checkBalanceSide(points[13],points[5],points[0])*60,"inches")
+    messages = [computeDepthSide(points[12],points[11]),computeDepthSide(points[9],points[8]),checkBalanceSide(points[13],points[5],points[0])*60]
+    return messages
     #cv2.waitKey(0)
 
 #detectImage("squat1.jpg")
